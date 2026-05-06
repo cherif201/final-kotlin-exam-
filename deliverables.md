@@ -17,3 +17,4 @@
 - Switched image loading to prefer bundled asset files named by question id under `app/src/main/assets/quiz_images/`, with remote fallback for questions that still do not have local files.
 - Added an academic LaTeX report for the IT370 project, including sections for architecture, testing, and the controlled use of AI.
 - Revised the academic report to include a formal title page, a table of contents, and embedded testing evidence from the `report_assets` folder.
+- Added a repository README covering the app overview, feature set, tech stack, setup, testing, assets, and academic report links.
