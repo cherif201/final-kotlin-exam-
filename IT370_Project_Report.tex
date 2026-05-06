@@ -1,0 +1,245 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\setstretch{1.2}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    {\Large \textbf{IT370 Project Report}\par}
+    \vspace{1cm}
+    {\huge \textbf{Tunisia Heritage Quest}\par}
+    \vspace{1.5cm}
+
+    {\Large Android Educational Quiz Application\par}
+    \vspace{2cm}
+
+    \begin{tabular}{>{\bfseries}l l}
+        Student Name: & Mohamed Cherif Khcherif \\
+        Course: & IT370 \\
+        Professor: & Najet Boughanmi \\
+        Project Type: & Android Mobile Application \\
+        Technology: & Kotlin, Jetpack Compose, Room, DataStore \\
+    \end{tabular}
+
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+This report presents the design and implementation of \textbf{Tunisia Heritage Quest}, an Android mobile application developed as part of the IT370 course. The application is a single-player educational quiz game focused on Tunisian heritage, history, monuments, cities, and natural landmarks. The main objective of the project is to combine mobile development practices with an engaging cultural learning experience.
+
+The application allows the user to choose a category, select a difficulty level, answer quiz questions, and receive a final score with performance feedback. The project was designed to be visually attractive, educational, and technically structured using modern Android development practices.
+
+\section{Project Objectives}
+The main objectives of the project are:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Develop a complete Android application using Kotlin and Jetpack Compose.
+    \item Create an educational experience centered around Tunisian heritage.
+    \item Apply a structured software architecture based on MVVM.
+    \item Integrate local persistence for settings and player statistics.
+    \item Design a polished and culturally coherent user interface.
+    \item Validate the application through unit testing and feature verification.
+\end{itemize}
+
+\section{Project Overview}
+Tunisia Heritage Quest is organized around a simple gameplay loop. The user starts from a splash screen, reaches the main menu, selects a category, chooses a difficulty level, answers multiple-choice questions, and finally receives a results summary. The quiz content is distributed across several categories such as Roman heritage, Islamic heritage, Punic heritage, modern heritage, natural sites, and cities.
+
+The final version of the project includes:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item A splash screen and main menu.
+    \item Category and difficulty selection screens.
+    \item Quiz gameplay with timer, haptic feedback, and sound effects.
+    \item Results screen with score and performance summary.
+    \item Local settings persistence using DataStore.
+    \item Player statistics persistence using Room.
+    \item Asset-based image loading for selected quiz questions.
+\end{itemize}
+
+\section{Architecture and Technical Design}
+\subsection{Architecture}
+The project follows the \textbf{MVVM} (Model-View-ViewModel) architecture. This choice helps separate business logic from the user interface and improves maintainability.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{UI Layer:} built with Jetpack Compose and organized into screens and reusable components.
+    \item \textbf{ViewModel Layer:} handles UI state, quiz logic, settings updates, and navigation events.
+    \item \textbf{Data Layer:} includes repositories, local database access, settings storage, and question data.
+\end{itemize}
+
+\subsection{Main Technologies}
+The main technologies used in the project are:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Kotlin
+    \item Jetpack Compose
+    \item Material 3
+    \item Android Navigation Compose
+    \item Room Database
+    \item DataStore Preferences
+    \item Kotlin Coroutines and StateFlow
+    \item Coil for image rendering
+\end{itemize}
+
+\section{Functional Features}
+The application includes the following major features:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Splash Screen:} introduces the application branding.
+    \item \textbf{Main Menu:} displays player statistics and gives access to the quiz flow.
+    \item \textbf{Category Selection:} allows the player to choose a quiz category.
+    \item \textbf{Difficulty Selection:} lets the player choose Easy, Medium, or Hard difficulty.
+    \item \textbf{Quiz Screen:} displays question image, prompt, answer choices, timer, and feedback.
+    \item \textbf{Settings Options:} includes timer enable/disable, sound effects, and haptic feedback.
+    \item \textbf{Results Screen:} shows score, percentage, and performance summary.
+\end{itemize}
+
+\section{User Interface and UX Design}
+The user interface was designed around a Mediterranean blue visual identity inspired by Tunisian cultural motifs. The design uses a combination of deep blue, cream, and gold accents to create a premium and culturally relevant visual style.
+
+The UI/UX work focused on:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Building a coherent visual system across all screens.
+    \item Improving readability and spacing on mobile screens.
+    \item Creating an interface consistent with the heritage theme of the application.
+    \item Making navigation simple and understandable.
+    \item Preserving a polished and academic presentation quality.
+\end{itemize}
+
+The most important human contribution in the project was the \textbf{high-level design direction and the UI/UX design decisions}. This includes defining the application structure, choosing the visual style, refining interaction flow, and deciding how the educational experience should look and feel.
+
+\section{Data and Image Handling}
+The project uses a local question bank containing multiple categories and difficulty levels. Each question includes a prompt, answer choices, the correct answer, and a related heritage item.
+
+For image handling, the project originally attempted remote image resolution, but due to reliability concerns it was adapted to prefer bundled assets for available question IDs, with fallback behavior retained for missing entries. This improved demonstration reliability and made the application safer to present under time constraints.
+
+\section{Testing}
+Testing was an important part of the project. The goal was not only to make the application functional, but also to validate the logic behind the quiz flow and important user interactions.
+
+\subsection{Testing Strategy}
+The testing work focused on the following:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Verifying quiz initialization.
+    \item Verifying answer submission and scoring behavior.
+    \item Verifying timer expiration logic.
+    \item Verifying results message generation.
+    \item Verifying successful debug build generation.
+\end{itemize}
+
+\subsection{Executed Validation}
+The following terminal tasks were used to validate the project:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \texttt{.\textbackslash gradlew.bat :app:assembleDebug}
+    \item \texttt{.\textbackslash gradlew.bat :app:testDebugUnitTest}
+\end{itemize}
+
+These commands were used to verify that:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item the application compiles correctly,
+    \item the debug APK is generated successfully,
+    \item the implemented unit tests pass without failure.
+\end{itemize}
+
+\subsection{Current Testing Scope}
+At the current stage, the project includes unit and ViewModel-oriented testing support. Additional UI instrumentation coverage can be extended further, but the delivered version already validates the most important gameplay logic and build stability.
+
+\section{Use of Artificial Intelligence}
+Artificial intelligence tools were used in this project in a \textbf{limited and controlled way}. AI was not used as the main author of the project. Instead, it was used as a support tool in selected parts of the workflow.
+
+\subsection{AI-Assisted Tasks}
+AI was used for the following tasks:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item Question generation support for the quiz content.
+    \item Code review and debugging assistance.
+    \item Test generation support.
+    \item Image generation support.
+    \item A limited amount of code implementation assistance.
+\end{itemize}
+
+\subsection{Human Contribution}
+The human contribution remained dominant in the project. The most important human work included:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item High-level design decisions.
+    \item UI/UX design direction.
+    \item Feature selection and prioritization.
+    \item Review and adjustment of generated outputs.
+    \item Final project integration and delivery decisions.
+\end{itemize}
+
+In other words, AI was used as an auxiliary tool, while the human role remained central in the conceptual, visual, and product-level aspects of the project.
+
+\section{Challenges and Solutions}
+During the development of the project, several challenges were encountered:
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Image reliability:} remote image loading was unstable for some quiz questions.
+    \item \textbf{UI consistency:} the first version of the interface did not match the required project quality.
+    \item \textbf{Button responsiveness:} some UI controls required resizing and layout fixes.
+    \item \textbf{Delivery constraints:} the project had to be stabilized quickly before submission.
+\end{itemize}
+
+These issues were addressed by improving layout components, refining the design system, fixing interaction logic, and updating the image pipeline to support local asset-based loading where available.
+
+\section{Conclusion}
+Tunisia Heritage Quest is a complete Android educational quiz application that combines cultural content with modern Android development practices. The project demonstrates the use of Kotlin, Jetpack Compose, MVVM architecture, local persistence, and testing in a real mobile application context.
+
+The project also shows how AI tools can be integrated responsibly into a development workflow without replacing the essential human role in design, decision-making, and final quality control. Overall, the final result is a functional and visually coherent application that satisfies the academic goals of the IT370 project.
+
+\section*{Appendix: Summary}
+\addcontentsline{toc}{section}{Appendix: Summary}
+
+\begin{longtable}{p{0.32\textwidth} p{0.58\textwidth}}
+\toprule
+\textbf{Item} & \textbf{Description} \\
+\midrule
+Project Name & Tunisia Heritage Quest \\
+Course & IT370 \\
+Professor & Najet Boughanmi \\
+Student & Mohamed Cherif Khcherif \\
+Platform & Android \\
+Language & Kotlin \\
+UI Framework & Jetpack Compose \\
+Architecture & MVVM \\
+Persistence & Room and DataStore \\
+Testing & Unit testing and build verification \\
+AI Usage & Questions, code review, tests, image generation, and limited code help \\
+Human Focus & High-level design and UI/UX design \\
+\bottomrule
+\end{longtable}
+
+\end{document}
